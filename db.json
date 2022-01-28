@@ -1,0 +1,22 @@
+{
+  "motorcycle": [
+    {
+      "id": 1,
+      "name": "Honda CRZ",
+      "description": "sdasdasdasdasdas",
+      "price": 9990
+    },
+    {
+      "id": 2,
+      "name": "Kawasaki CRZ",
+      "description": "sdasdasdasdasdas",
+      "price": 19990
+    },
+    {
+      "id": 3,
+      "name": "Harley CRZ",
+      "description": "sdasdasdasdasdas",
+      "price": 9990
+    }
+  ]
+}
