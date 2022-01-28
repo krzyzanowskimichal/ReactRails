@@ -2,21 +2,24 @@
   "motorcycle": [
     {
       "id": 1,
-      "name": "Honda CRZ",
-      "description": "sdasdasdasdasdas",
-      "price": 9990
+      "name": "Yamaha FZ",
+      "description": "600 Fazer",
+      "price": 9990,
+      "photoURL": "https://imgd.aeplcdn.com/476x268/bw/models/yamaha-fz-v3-single-channel-abs--bs-vi20191111113605.jpg"
     },
     {
       "id": 2,
-      "name": "Kawasaki",
-      "description": "sdasdasdasdasdas",
-      "price": "1990"
+      "name": "Suzuki GSF",
+      "description": "650 Bandit",
+      "price": 19900,
+      "photoURL": "https://motorecenzje.com/wp-content/uploads/2020/09/Suzuki-Bandit-GSF-1200S.jpg"
     },
     {
       "id": 3,
-      "name": "Harley CRZ",
-      "description": "sdasdasdasdasdas",
-      "price": 9990
+      "name": "Ducati Panigale",
+      "description": "700 VR4",
+      "price": 39990,
+      "photoURL": "https://www.moto46.pl/wp-content/uploads/2019/01/v4r-633x451.jpg"
     }
   ]
 }

@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { addItemStart, loadDataStart, updateItemStart } from "../../actions";
 
 const StyledWrapper = styled.div`
-  border-left: 10px solid;
   z-index: 99;
   position: fixed;
   padding: 100px 50px;
@@ -19,20 +18,37 @@ const StyledWrapper = styled.div`
   top: 0;
   height: 100vh;
   width: 600px;
+
+  @media (max-width: 600px) {
+    padding: 40px 20px;
+    width: 320px;
+  }
 `;
+
+const StyledHeading = styled.p`
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+`
 
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: auto;
+  gap: 20px;
 `;
+
+const StyledInput = styled.input`
+  padding: 8px 12px;
+`
 
 
 const Drawer = ({ isVisible, handleClose, formValue, setFormValue, context, id }) => {
     const dispatch = useDispatch()
 
-    const { name, description, price } = formValue
+    const { name, description, price, photoURL } = formValue
 
     // useEffect(() => {
     //   setFormValue(initialValues)
@@ -60,10 +76,10 @@ const Drawer = ({ isVisible, handleClose, formValue, setFormValue, context, id }
 
     return (
         <StyledWrapper isVisible={isVisible}>
-            <h4>{context === 'add' ? "Add new Item" : "Edit item"}</h4>
+            <StyledHeading>{context === 'add' ? "Add new Item" : "Edit item"}</StyledHeading>
     
             <StyledForm onSubmit={handleSubmit}>
-                <input 
+                <StyledInput 
                     value={name}
                     required
                     type='text'
@@ -71,21 +87,27 @@ const Drawer = ({ isVisible, handleClose, formValue, setFormValue, context, id }
                     name='name'
                     placeholder="Name"
                 />
-                <input 
+                <StyledInput 
                     value={description}
-                    required
                     type='text'
                     onChange={handleInputChange}
                     name='description'
                     placeholder="Description"
                 />
-                <input 
+                <StyledInput 
                     value={price}
                     required
                     type='number'
                     onChange={handleInputChange}
                     name='price'
-                    placeholder="price"
+                    placeholder="Price"
+                />
+                 <StyledInput 
+                    value={photoURL}
+                    type='text'
+                    onChange={handleInputChange}
+                    name='photo'
+                    placeholder="Photo URL"
                 />
                 <button
                     type="submit"
