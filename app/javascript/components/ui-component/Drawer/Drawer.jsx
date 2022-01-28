@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components"
-import { Formik, Field, Form, ErrorMessage } from "formik";
 import { useDispatch, useSelector } from "react-redux";
-import { addItemStart, loadDataStart } from "../../actions";
+import { addItemStart, loadDataStart, updateItemStart } from "../../actions";
 
 const StyledWrapper = styled.div`
   border-left: 10px solid;
@@ -22,41 +21,35 @@ const StyledWrapper = styled.div`
   width: 600px;
 `;
 
-
-
-const InputContainer = styled("div")`
-  margin-bottom: 20px;
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: auto;
 `;
 
-const StyledField = styled(Field)`
-  font-family: "InconsolataLGCmarkup";
-  width: 100%;
-  padding: 12px 12px;
-  border: none;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  :focus {
-    outline: none;
-  }
-`;
 
-const initialValues = {
-    name: "",
-    description: "",
-    price: ""
-}
-
-const Drawer = ({ isVisible, handleClose, actionType }) => {
+const Drawer = ({ isVisible, handleClose, formValue, setFormValue, context, id }) => {
     const dispatch = useDispatch()
 
-    const [formValue, setFormValue] = useState(initialValues)
     const { name, description, price } = formValue
+
+    // useEffect(() => {
+    //   setFormValue(initialValues)
+    // }, [isVisible])
+
     const handleSubmit = (e) => {
         e.preventDefault()
         if (name && description && price) {
+          if (context === 'add') {
             dispatch(addItemStart(formValue))
-            setTimeout(dispatch(loadDataStart()), 500)
-            handleClose()
+          }
+          else {
+            dispatch(updateItemStart({id, formValue}))
+          }
+          dispatch(loadDataStart())
+          handleClose()
+
         }
     }
     const handleInputChange = (e) => {
@@ -67,49 +60,9 @@ const Drawer = ({ isVisible, handleClose, actionType }) => {
 
     return (
         <StyledWrapper isVisible={isVisible}>
-            <h4>Add newa item</h4>
-            <Formik
-                initialValues={{...initialValues}}
-                validate={values => {
-                    const errors = {};
-          
-                    if (!values.name) {
-                      errors.name = 'Name is required';
-                    }
-          
-                    if (!values.description) {
-                      errors.description = 'Description is required';
-                    }
-          
-                    if (!values.price) {
-                      errors.price = 'Price is required';
-                    }
-                    
-                    return errors;
-                }}
-                onSubmit={(values, { resetForm }) => {
-                    handleSubmit()
-                    resetForm()
-                }}
-            >
-                <Form style={{ display: "flex", flexDirection: "column" }}>
-              <InputContainer>
-                <StyledField name="name" type="text" placeholder="Name" />
-                <ErrorMessage name="name" />
-              </InputContainer>
-              <InputContainer>
-                <StyledField name="description" type="text" placeholder="Description" />
-                <ErrorMessage name="description" />
-              </InputContainer>
-              <InputContainer>
-                <StyledField name="price" type="number" placeholder="Price" />
-                <ErrorMessage name="price" />
-              </InputContainer>
-              <button type="submit">Submit</button>
-            </Form>
-
-            </Formik>
-            {/* <StyledForm onSubmit={handleSubmit}>
+            <h4>{context === 'add' ? "Add new Item" : "Edit item"}</h4>
+    
+            <StyledForm onSubmit={handleSubmit}>
                 <input 
                     value={name}
                     required
@@ -137,7 +90,7 @@ const Drawer = ({ isVisible, handleClose, actionType }) => {
                 <button
                     type="submit"
                 >Submit</button>
-            </StyledForm> */}
+            </StyledForm>
         </StyledWrapper>
     )
 }

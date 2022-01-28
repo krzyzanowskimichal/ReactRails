@@ -8,9 +8,9 @@
     },
     {
       "id": 2,
-      "name": "Kawasaki CRZ",
+      "name": "Kawasaki",
       "description": "sdasdasdasdasdas",
-      "price": 19990
+      "price": "1990"
     },
     {
       "id": 3,
