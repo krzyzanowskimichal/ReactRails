@@ -1,6 +1,6 @@
 # Rails + React CRUD App
 
-This project was made with .
+The purpose of the app is to display a list of items in which the user can add, edit and delete elements. The request from React should go to Rails server and then to external API.
 
 ## Install
 
@@ -24,16 +24,14 @@ Run Rails server
 rails s
 ```
 
-Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-You may also see any lint errors in the console.
+The app is running in the development mode. You may see some logs in the console.
 
 ## Main functionalities and features
 
 The app provides functionalities such as:
 
-- Fetching data from 3rd party API throught Rails server
+- Fetching data
 - Adding new Items
 - Editing existing items
 - Deleting items
