@@ -44,19 +44,30 @@ const StyledInput = styled.input`
   padding: 8px 12px;
 `
 
+const StyledButton = styled.button`
+  border: none;
+  outline: none;
+  padding: 12px 0;
+  font-weight: 700;
+  font-weight: 1rem;
+  text-transform: uppercase;
+
+  :hover {
+    background-color: #414141;
+    color: white;
+    cursor: pointer;
+  }
+`
+
 
 const Drawer = ({ isVisible, handleClose, formValue, setFormValue, context, id }) => {
     const dispatch = useDispatch()
 
     const { name, description, price, photoURL } = formValue
 
-    // useEffect(() => {
-    //   setFormValue(initialValues)
-    // }, [isVisible])
-
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (name && description && price) {
+        if (name && price) {
           if (context === 'add') {
             dispatch(addItemStart(formValue))
           }
@@ -84,7 +95,7 @@ const Drawer = ({ isVisible, handleClose, formValue, setFormValue, context, id }
                     type='text'
                     onChange={handleInputChange}
                     name='name'
-                    placeholder="Name"
+                    placeholder="Name*"
                 />
                 <StyledInput 
                     value={description}
@@ -99,7 +110,7 @@ const Drawer = ({ isVisible, handleClose, formValue, setFormValue, context, id }
                     type='number'
                     onChange={handleInputChange}
                     name='price'
-                    placeholder="Price"
+                    placeholder="Price*"
                 />
                  <StyledInput 
                     value={photoURL}
@@ -108,9 +119,10 @@ const Drawer = ({ isVisible, handleClose, formValue, setFormValue, context, id }
                     name='photo'
                     placeholder="Photo URL"
                 />
-                <button
+                <p>*Required</p>
+                <StyledButton
                     type="submit"
-                >Submit</button>
+                >Submit</StyledButton>
             </StyledForm>
         </StyledWrapper>
     )

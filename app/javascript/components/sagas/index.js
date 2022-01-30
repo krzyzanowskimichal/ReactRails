@@ -12,7 +12,8 @@ import {
     deleteItemSuccess,
     deleteItemError,
     UPDATE_ITEM_START,
-    updateItemSuccess
+    updateItemSuccess,
+    updateItemError
 } from '../actions'
 
 function* onFetchDataStartAsync () {
@@ -47,15 +48,15 @@ function* onAddItemStartAsync ({payload}) {
 function* onUpdateItemStartAsync ({payload}) {
     try {
         const response = yield call(
-            async (item_id, itemData) => await axios.put(`http://localhost:5000/motorcycle/${item_id}`, itemData), payload.id, payload.formValue
+            async (item_id, itemData) => await axios.put(`http://localhost:3000/edit/?id=${item_id}`, itemData), payload.id, payload.formValue
         )
-        if (response.status === 200) {
+        if (response.status === 200 || response.status === 204) {
             yield delay(500)
             yield put(updateItemSuccess())
             }
         }
     catch(error) {
-        yield put(addItemError(error.response.data))
+        yield put(updateItemError(error.response.data))
     }
 }
 

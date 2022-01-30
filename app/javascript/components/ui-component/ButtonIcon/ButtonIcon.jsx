@@ -1,7 +1,6 @@
 import styled from "styled-components"
 import plusIcon from '../../../../assets/images/plus.svg'
 
-
 export const ButtonIcon = styled.button`
     position: fixed;
     bottom: 40px;
@@ -13,7 +12,7 @@ export const ButtonIcon = styled.button`
     background-image: url(${plusIcon});
     background-size: 35%;
     background-repeat: no-repeat;
-    background-color: #f2aa4cff;
+    background-color: #757de8;
     background-position: center center;
     border: none;
     border-radius: 50%;

@@ -24,7 +24,8 @@ const StyledButton = styled.button`
 
 const StyledTh = styled.th`
     padding: 10px;
-    background-color: lightblue;
+    color: white;
+    background-color: #002984;
     border-bottom: 10px solid #d9d9d9;
 `
 
@@ -43,6 +44,7 @@ const VehicleContainer = styled.div`
     flex-direction: column;
     gap: 6px;
 `
+
 const StyledImg = styled.img`
     height: 60px;
     width: auto;
@@ -85,8 +87,6 @@ const Homepage = () => {
         setFormValue({...singleItem})
 
     }
-
-    useEffect(() => console.log(context), [context])
 
     return (
         <>

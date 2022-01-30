@@ -20,6 +20,13 @@
       "description": "700 VR4",
       "price": 39990,
       "photoURL": "https://www.moto46.pl/wp-content/uploads/2019/01/v4r-633x451.jpg"
+    },
+    {
+      "name": "asdas11",
+      "description": "asdas",
+      "price": "21321",
+      "photoURL": "",
+      "id": 4
     }
   ]
 }

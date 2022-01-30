@@ -6,9 +6,10 @@ const StyledWrapper = styled.nav`
     top: 0;
     left: 0;
     width: 100%;
-    height: 50px;
-    padding: 0 20px;
-    background-color: #f2aa4cff;
+    padding: 20px 20px;
+    color: white;
+    letter-spacing: 3px;
+    background-color: #3f51b5;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -16,14 +17,18 @@ const StyledWrapper = styled.nav`
 `
 
 const StyledHeading = styled.h1`
-    font-size: 20px;
+    font-size: 30px;
+
+    @media (max-width: 460px) {
+        font-size: 20px;
+    }
 `
 
 const NavBar = () => {
 
     return (
         <StyledWrapper>
-            <StyledHeading>MOTORCYCLED APP</StyledHeading>
+            <StyledHeading>MOTORCYCLE APP</StyledHeading>
         </StyledWrapper>
     )
 
