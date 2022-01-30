@@ -5,4 +5,12 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   root 'pages#index'
+
+  get '/data', to: "motorcycles#get_data"
+  post '/add', to: "motorcycles#post_item"
+  delete '/delete', to: "motorcycles#delete_item"
+  put '/edit', to: "motorcycles#edit_item"
+  resources :motorcycles
+
 end
+

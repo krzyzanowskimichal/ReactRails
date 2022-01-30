@@ -63,9 +63,8 @@ const Drawer = ({ isVisible, handleClose, formValue, setFormValue, context, id }
           else {
             dispatch(updateItemStart({id, formValue}))
           }
-          dispatch(loadDataStart())
           handleClose()
-
+          setTimeout(() => dispatch(loadDataStart()), 500)
         }
     }
     const handleInputChange = (e) => {

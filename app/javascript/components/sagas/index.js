@@ -1,5 +1,6 @@
 import { all, call, delay, fork, put, take, takeEvery, takeLatest } from 'redux-saga/effects'
 import axios from 'axios';
+import { serialize } from '../helpers/helpers'
 import { 
     loadDataSuccess, 
     loadDataError, 
@@ -17,7 +18,7 @@ import {
 function* onFetchDataStartAsync () {
     try {
         const response = yield call(
-            async () => await axios.get('http://localhost:5000/motorcycle')
+            async () => await axios.get('http://localhost:3000/data')
         )
         if (response.status === 200) {
             yield delay(500)
@@ -32,9 +33,9 @@ function* onFetchDataStartAsync () {
 function* onAddItemStartAsync ({payload}) {
     try {
         const response = yield call(
-            async (item) => await axios.post('http://localhost:5000/motorcycle', item), payload
+            async (item) => await axios.post(`http://localhost:3000/add/?}`, item), payload
         )
-        if (response.status === 200) {
+        if (response.status === 201) {
             yield put(addItemSuccess(response.data))
             }
         }
@@ -49,6 +50,7 @@ function* onUpdateItemStartAsync ({payload}) {
             async (item_id, itemData) => await axios.put(`http://localhost:5000/motorcycle/${item_id}`, itemData), payload.id, payload.formValue
         )
         if (response.status === 200) {
+            yield delay(500)
             yield put(updateItemSuccess())
             }
         }
@@ -60,9 +62,9 @@ function* onUpdateItemStartAsync ({payload}) {
 function* onDeleteItemStartAsync (item_id) {
     try {
         const response = yield call(
-            async (item_id) => await axios.delete(`http://localhost:5000/motorcycle/${item_id}`), item_id
+            async (item_id) => await axios.delete(`http://localhost:3000/delete/?id=${item_id}`), item_id
         )
-        if (response.status === 200) {
+        if (response.status === 200 || response.status === 204) {
             yield delay(500)
             yield put(deleteItemSuccess(item_id))
             }

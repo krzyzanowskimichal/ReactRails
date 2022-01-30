@@ -63,7 +63,7 @@ export const updateItemStart = (itemData) => ({
 })
 
 export const updateItemSuccess = () => ({
-    type: UPDATE_ITEM_SUCCESS, 
+    type: UPDATE_ITEM_SUCCESS
 })
 
 export const updateItemError = (error) => ({
