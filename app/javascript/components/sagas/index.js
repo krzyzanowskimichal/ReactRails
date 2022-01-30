@@ -1,6 +1,5 @@
 import { all, call, delay, fork, put, take, takeEvery, takeLatest } from 'redux-saga/effects'
 import axios from 'axios';
-import { serialize } from '../helpers/helpers'
 import { 
     loadDataSuccess, 
     loadDataError, 
